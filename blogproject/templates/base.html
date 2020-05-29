@@ -1,0 +1,103 @@
+<style>
+    @font-face {
+        font-family: 'Daehan';
+        font-style: normal;
+        font-weight: 400;
+        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanR.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanR.woff') format('woff');
+    }
+    @font-face {
+        font-family: 'Daehan';
+        font-style: normal;
+        font-weight: 700;
+        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanB.woff') format('woff');
+    }
+    @font-face { font-family: 'HSBombaram'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSBombaram.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+    .daehan {
+        font-family: 'Daehan', serif;
+    }
+    .bombaram {
+        font-family: 'HSBombaram', serif;
+    }
+    body {
+        background-color: #F6EFFB;
+    }
+    nav {
+        background-color: #DDAAFD;
+        position: sticky;
+        width: 80%;
+        height: 50px;
+        top: 10px;
+        left: 10%;
+        border-radius: 10px;
+        z-index: 500;
+        opacity: 0.8;
+        line-height: 50px;
+    }
+    .menu {
+        margin: 0 auto;
+        display: block;
+    }
+    .menu .menu-li {
+        list-style: none;
+        float: left;
+        font-size: 15pt;
+    }
+    .menu-li {
+        width: 20%;
+        text-align: center;
+    }
+    .nav-main {
+        font-size: 20pt;
+        font-weight: bold;
+    }
+    .nav-a {
+        color: white;
+        text-decoration: none;
+    }
+    .nav-a:hover {
+        color: #BE57FE;
+    }
+    .for-toggle {
+        display: none;
+    }
+    #toggle {
+        display: none;
+    }
+    @media screen and (orientation: portrait) {
+        nav {
+            width: 100%;
+        }
+        .menu .menu-li { 
+            clear: both; 
+            background-color: #DDAAFD;
+            width: 90%;
+        }
+        .menu { display: none; }
+        .for-toggle { 
+            display: inline;
+            font-size: 45px;
+            margin: 13px;
+            color: white;
+        }
+        #toggle:checked + .menu { display: block; }
+    }
+</style>
+<body>
+    <nav class="daehan">
+        <label for="toggle" class="for-toggle">&#8801;</label>
+        <input type="checkbox" id="toggle"/>
+        <ul class="menu">
+            <li class="menu-li"><a class="nav-a nav-main" href="{%url 'home'%}">BLOG</a></li>
+            <li class="menu-li"><a class="nav-a" href="{% url 'home'%}">홈</a></li>
+            <li class="menu-li"><a class="nav-a" href="{% url 'newblog'%}">글쓰기</a></li>
+            <li class="menu-li"><a class="nav-a" href="{%url 'portfolio'%}">Portfolio</a></li>
+        </ul>
+    </nav>
+
+    {% block contents %}
+    <!--이 사이에 컨텐츠가 온다-->
+    <!--contents 부분에 title쓰면 여기에 타이틀이 오는 거고 sidebar하면 sidebar하는 거고-->
+    {%  endblock %}
+
+</body>

@@ -1,0 +1,133 @@
+
+<html>
+    <head>
+        <title>My Blog</title>
+
+        <style>
+            @font-face {
+                font-family: 'Daehan';
+                font-style: normal;
+                font-weight: 400;
+                src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanR.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanR.woff') format('woff');
+            }
+            @font-face {
+                font-family: 'Daehan';
+                font-style: normal;
+                font-weight: 700;
+                src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/yoon/Daehan/DaehanB.woff') format('woff');
+            }
+            @font-face { font-family: 'HSBombaram'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSBombaram.woff') format('woff'); font-weight: normal; font-style: normal; }
+            
+            .daehan {
+                font-family: 'Daehan', serif;
+            }
+            .bombaram {
+                font-family: 'HSBombaram', serif;
+            }
+            body {
+                background-color: #F6EFFB;
+            }
+            nav {
+                background-color: #DDAAFD;
+            }
+            .card {
+                width: 60%;
+                margin: 0 auto;
+                margin-top: 100px;
+                background-color: white;
+                border: 1px solid #DDAAFD;
+                border-radius: 10px;
+                text-align: center;
+            }
+            a {
+                color: #BE57FE;
+            }
+            a:hover {
+                color: #DDAAFD;
+            }
+            .title {
+                font-size: 30pt;
+                margin: 20px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            hr {
+                border: 0.3px solid #DDAAFD;
+                background-color: #DDAAFD;
+                margin: 30px 0px;
+            }
+            .date{
+                color: #DDAAFD;
+                padding: 5px;
+                text-align: center;
+            }
+            .body {
+                padding: 20px;
+            }
+            .btn-div {
+                text-align: center;
+                padding: 50px;
+            }
+            .btn {
+                background-color: #DDAAFD; 
+                color: white;
+                font-size: 12pt;
+                border: none;
+                padding: 10px;
+                width: 80px;
+                border-radius: 10px;
+            }
+            .btn:hover {
+                background-color: #BE57FE;
+            }
+            .btn:focus {
+                outline: none;
+            }
+            a {
+                color: #BE57FE;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #DDAAFD;
+                text-decoration: none;
+            }
+            .align-right {
+                text-align: right;
+            }
+            .mar {
+                margin: 0 5px;
+                font-size: 12pt;
+            }
+        </style>
+    {% extends 'base.html' %}
+    </head>
+    {% block contents %}
+    <body>
+        <div class="daehan">
+            <div>
+                <div class="card" style="padding: 40px 60px;">
+                    <div class="title bombaram">{{blog.title}}</div>
+                    <div class="date">{{blog.pub_date}}</div>
+                    <div class="align-right">
+                        <a href="{%url 'update' blog.id%}" class="btn2 daehan mar">수정</a>
+                        <a href="{%url 'delete' blog.id%}" class="btn2 daehan mar">삭제</a>
+                    </div>
+                    <hr>
+                    <p class="body">{{blog.body}}</p>
+                </div>
+            </div>
+            
+            <script type="text/javascript"> 
+                window.onload = function() { 
+                    document.getElementById('btn_home').onclick = function() { 
+                        location.href="{% url 'home'%}";
+                    }
+                }; 
+            </script>
+            <div class="btn-div">
+                <button id="btn_home" class="btn daehan">홈으로</button>
+            </div>
+        </div>
+    </body>
+    {% endblock %}
+</html>

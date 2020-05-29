@@ -1,0 +1,106 @@
+
+<!Doctype html>
+<html>
+  <head>
+    <title>My Portfolio</title>
+    <style>
+      .section {
+          text-align: center;
+          margin: 70px auto;
+          border: 1px solid #DDAAFD;
+          border-radius: 10px;
+          background-color: white;
+          width: 60%;
+      }
+      .btn-left {
+          margin-right: -1px;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          border-right: 1px solid white;
+      }
+      .btn-right {
+          margin-left: -2px;
+          border-top-right-radius: 10px; 
+          border-bottom-right-radius: 10px;
+          border-left: 1px solid white;
+      }
+      .btn {
+          color: white;
+          background-color: #DDADFD;
+          border: none;
+          width: 60px;
+          padding: 10px;
+      }
+      .btn:hover {
+          background-color: #BE57FE;
+      }
+      .btn:focus {
+          outline: none;
+      }
+      .btn-mar {
+          margin: 30px;
+      }
+      img {
+          height: auto;
+          max-width: 100%;
+          border-radius: 10px;
+      }
+      @media screen and (orientation: portrait) {
+          .section {
+            width: 80%;
+          }
+      }
+      .title {
+          font-size: 30pt;
+      }
+      .body {
+        margin: 30px;
+      }
+    </style>
+  </head>
+  {% extends 'base.html' %}
+  {% load static %}
+  {% block contents %}
+  <body>
+    
+    <div class="section daehan">
+        <img src="{% static 'img1.png'%}" alt="이미지 사진">
+        <div class="description">
+            <p class="body">넣을 이미지를 급하게 만들었습니다...</p>
+            <div class="btn-mar">
+              <button class="btn btn-left daehan">VIEW</button>
+              <button class="btn btn-right daehan">EDIT</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section daehan">
+        <img src="{% static '3color.jpg'%}" alt="삼색이">
+        <div class="description">
+            <p class="body">삼색이는 귀엽습니다.</p>
+            <div class="btn-mar">
+              <button class="btn btn-left daehan">VIEW</button>
+              <button class="btn btn-right daehan">EDIT</button>
+            </div>
+        </div>
+    </div>
+
+    {%for portfolio in portfolios.all%}
+    <div class="section daehan">
+        <img src="{{portfolio.image.url}}" alt="이미지 사진">
+        <div class="description">
+            <h2 class="title bombaram">{{portfolio.title}}</h2>
+            <p class="body">{{portfolio.description}}</p>
+            <div class="btn-mar">
+              <button class="btn btn-left daehan">VIEW</button>
+              <button class="btn btn-right daehan">EDIT</button>
+            </div>
+        </div>
+      </div>
+    {%endfor%}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+    </body>
+    {% endblock %}
+</html>
